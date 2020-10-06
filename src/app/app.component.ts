@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-ngrx';
+  names = [
+    'name1',
+    'name2',
+    'name3',
+    'name4',
+  ];
 }
