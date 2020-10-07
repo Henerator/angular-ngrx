@@ -1,5 +1,9 @@
 App component
 
-<div *ngFor="let name of name">
-  {{ name }}
+<div *ngFor="let item of todosItems$ | async">
+    {{ item.name }} - {{ item.date | date:'dd MMM' }}
+</div>
+
+<div *ngIf="isLoading$ | async">
+    Loading...
 </div>
