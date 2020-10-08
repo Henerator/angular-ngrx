@@ -1,10 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RootStoreModule } from './root-store/root-store.module';
 import { TodosDataService } from './services/todos-data.service';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+
 
 @NgModule({
     declarations: [
@@ -13,9 +16,13 @@ import { TodosDataService } from './services/todos-data.service';
     imports: [
         BrowserModule,
         AppRoutingModule,
+        HttpClientModule,
         RootStoreModule,
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     ],
-    providers: [TodosDataService],
+    providers: [
+        TodosDataService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
