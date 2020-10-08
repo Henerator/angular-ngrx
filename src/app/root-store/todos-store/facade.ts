@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TodosStorageFacade } from '@facades/todos-storage.facade';
-import { TodosState } from './state';
+import { State } from './state';
 import * as TodosActions from './actions';
 import * as TodosSelectors from './selectors';
 
@@ -13,12 +13,12 @@ export class TodosStore extends TodosStorageFacade {
     isLoading$ = this.store$.select(TodosSelectors.selectTodosIsLoading);
 
     constructor(
-        private store$: Store<TodosState>
+        private store$: Store<State>
     ) {
         super();
     }
 
     loadTodos(): void {
-        this.store$.dispatch(TodosActions.loadRequest());
+        this.store$.dispatch(TodosActions.loadItems());
     }
 }

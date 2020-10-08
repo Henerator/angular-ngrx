@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TodosStoreModule } from './todos-store/todos-store.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { UserStoreModule } from './user-store';
+import { TodosStoreModule } from './todos-store';
 
 
 
@@ -11,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
     imports: [
         CommonModule,
         TodosStoreModule,
+        UserStoreModule,
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
     ],

@@ -15,13 +15,13 @@ export class TodosStoreEffects {
 
     @Effect()
     todosRequestEffect$: Observable<Action> = this.actions$.pipe(
-        ofType(todosActions.loadRequest),
+        ofType(todosActions.loadItems),
         switchMap(() => {
             return this.todosDataService
                 .fetch()
                 .pipe(
-                    map(items => todosActions.loadSuccess({ items })),
-                    catchError(error => of(todosActions.loadFailure({ error })))
+                    map(items => todosActions.loadItemsSuccess({ items })),
+                    catchError(error => of(todosActions.loadItemsFailure({ error })))
                 );
         })
     );

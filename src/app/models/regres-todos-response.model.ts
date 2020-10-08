@@ -1,10 +1,8 @@
-interface RegresTodo {
+interface JsonplaceholderTodo {
+    userId: number;
     id: number;
-    name: string;
-    year: number;
+    title: string;
+    completed: boolean;
 }
 
-export interface RegresTodosResponse {
-    total: number;
-    data: RegresTodo[];
-}
+export type JsonplaceholderTodosResponse = JsonplaceholderTodo[];

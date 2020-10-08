@@ -6,6 +6,24 @@
     {{ item.name }}
 </div>
 
-<div *ngIf="isLoading$ | async">
+<div *ngIf="todosIsLoading$ | async">
     Loading...
 </div>
+
+<ng-container *ngIf="(userData$ | async) as userData">
+    <h2>
+        User Info
+    </h2>
+
+    <div>
+        Name: {{ userData.name }}
+    </div>
+
+    <div *ngIf="userError$ | async">
+        Error
+    </div>
+
+    <div *ngIf="userIsLoading$ | async">
+        Loading...
+    </div>
+</ng-container>

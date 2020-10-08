@@ -7,6 +7,7 @@ import { RootStoreModule } from './root-store/root-store.module';
 import { TodosDataService } from './services/todos-data.service';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { UserDataService } from './services/user-data.service';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { environment } from '../environments/environment';
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     ],
     providers: [
-        TodosDataService
+        TodosDataService,
+        UserDataService,
     ],
     bootstrap: [AppComponent]
 })

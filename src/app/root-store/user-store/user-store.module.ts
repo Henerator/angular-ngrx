@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
+import { FEATURE_KEY, reducer } from './reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { reducer, FEATURE_KEY } from './reducer';
-import { TodosStoreEffects } from './effects';
+import { StoreEffects } from './effects';
 
 
 
@@ -12,7 +12,7 @@ import { TodosStoreEffects } from './effects';
     imports: [
         CommonModule,
         StoreModule.forFeature(FEATURE_KEY, reducer),
-        EffectsModule.forFeature([TodosStoreEffects])
+        EffectsModule.forFeature([StoreEffects])
     ],
 })
-export class TodosStoreModule { }
+export class UserStoreModule { }

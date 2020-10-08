@@ -1,23 +1,23 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { initialState, State } from './state';
-import * as TodosActions from './actions';
+import * as UserActions from './actions';
 
-export const FEATURE_KEY = 'todos';
+export const FEATURE_KEY = 'user';
 
-const todosReducer = createReducer(
+const userReducer = createReducer(
     initialState,
-    on(TodosActions.loadItems, (state) => ({
+    on(UserActions.loadUser, (state) => ({
         ...state,
         isLoading: true,
         error: null,
     })),
-    on(TodosActions.loadItemsSuccess, (state, { items }) => ({
+    on(UserActions.loadUserSuccess, (state, { data }) => ({
         ...state,
-        items,
+        data,
         isLoading: false,
         error: null,
     })),
-    on(TodosActions.loadItemsFailure, (state, { error }) => ({
+    on(UserActions.loadUserFailure, (state, { error }) => ({
         ...state,
         isLoading: false,
         error,
@@ -26,5 +26,5 @@ const todosReducer = createReducer(
 );
 
 export function reducer(state: State | undefined, action: Action): State {
-    return todosReducer(state, action);
+    return userReducer(state, action);
 }

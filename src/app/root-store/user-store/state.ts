@@ -1,13 +1,13 @@
-import { Todo } from 'src/app/models/todo.model';
+import { User } from '@models/user.model';
 
 export interface State {
-    items: Todo[] | null;
+    data: User | null;
     isLoading?: boolean;
     error?: any;
 }
 
 export const initialState: State = {
-    items: null,
+    data: null,
     isLoading: false,
     error: null,
 };

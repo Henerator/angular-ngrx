@@ -2,19 +2,19 @@ import { createAction, props } from '@ngrx/store';
 import { Todo } from 'src/app/models/todo.model';
 
 export enum ActionTypes {
-    LOAD_REQUEST = '[Todos] Load items',
-    LOAD_SUCCESS = '[Todos] Success',
-    LOAD_FAILURE = '[Todos] Failure',
+    LOAD_ITEMS = '[Todos] Load items',
+    LOAD_SUCCESS = '[Todos] Load items success',
+    LOAD_FAILURE = '[Todos] Load items failure',
 }
 
-export const loadRequest = createAction(
-    ActionTypes.LOAD_REQUEST
+export const loadItems = createAction(
+    ActionTypes.LOAD_ITEMS
 );
-export const loadSuccess = createAction(
+export const loadItemsSuccess = createAction(
     ActionTypes.LOAD_SUCCESS,
     props<{ items: Todo[] }>()
 );
-export const loadFailure = createAction(
+export const loadItemsFailure = createAction(
     ActionTypes.LOAD_FAILURE,
     props<{ error: string }>()
 );

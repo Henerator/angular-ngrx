@@ -1,8 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { TODOS_FEATURE_KEY } from './reducer';
-import { TodosState } from './state';
+import { FEATURE_KEY } from './reducer';
+import { State } from './state';
 
-export const selectTodosState = createFeatureSelector<TodosState>(TODOS_FEATURE_KEY);
+export const selectTodosState = createFeatureSelector<State>(FEATURE_KEY);
 
 export const selectTodosError = createSelector(
     selectTodosState,
