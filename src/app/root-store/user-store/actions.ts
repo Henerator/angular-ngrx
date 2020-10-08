@@ -1,3 +1,4 @@
+import { ApiError } from '@models/api-error.model';
 import { User } from '@models/user.model';
 import { createAction, props } from '@ngrx/store';
 
@@ -17,5 +18,5 @@ export const loadUserSuccess = createAction(
 );
 export const loadUserFailure = createAction(
     ActionTypes.LOAD_FAILURE,
-    props<{ error: string }>()
+    props<{ error: ApiError }>()
 );

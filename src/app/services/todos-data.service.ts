@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { JsonplaceholderTodosResponse } from '@models/regres-todos-response.model';
 import { Observable, of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { Todo } from '../models/todo.model';
 import { TODOS_DATA_MOCK } from './todos-data.mock';
-import { JsonplaceholderTodosResponse } from '@models/regres-todos-response.model';
 
 @Injectable()
 export class TodosDataService {
@@ -32,7 +32,7 @@ export class TodosDataService {
                         id: item.id,
                         name: item.title,
                         completed: item.completed,
-                    })))
+                    }))),
             );
     }
 }

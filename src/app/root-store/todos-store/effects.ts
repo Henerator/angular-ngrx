@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ApiError } from '@models/api-error.model';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
@@ -21,7 +22,7 @@ export class TodosStoreEffects {
                 .fetch()
                 .pipe(
                     map(items => todosActions.loadItemsSuccess({ items })),
-                    catchError(error => of(todosActions.loadItemsFailure({ error })))
+                    catchError((error: ApiError) => of(todosActions.loadItemsFailure({ error })))
                 );
         })
     );

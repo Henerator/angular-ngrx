@@ -6,24 +6,26 @@
     {{ item.name }}
 </div>
 
+<div *ngIf="(todosError$ | async) as todosError">
+    Error: {{ todosError.message }}
+</div>
+
 <div *ngIf="todosIsLoading$ | async">
     Loading...
 </div>
 
-<ng-container *ngIf="(userData$ | async) as userData">
-    <h2>
-        User Info
-    </h2>
+<h2>
+    User Info
+</h2>
 
-    <div>
-        Name: {{ userData.name }}
-    </div>
+<div *ngIf="(userData$ | async) as userData">
+    Name: {{ userData.name }}
+</div>
 
-    <div *ngIf="userError$ | async">
-        Error
-    </div>
+<div *ngIf="(userError$ | async) as userError">
+    Error: {{ userError.message }}
+</div>
 
-    <div *ngIf="userIsLoading$ | async">
-        Loading...
-    </div>
-</ng-container>
+<div *ngIf="userIsLoading$ | async">
+    Loading...
+</div>

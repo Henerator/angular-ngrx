@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosStorageFacade } from '@facades/todos-storage.facade';
 import { UserStorageFacade } from '@facades/user-storage.facade';
-import { User } from '@models/user.model';
 import { TodosStore, UserStore } from './root-store';
 
 @Component({

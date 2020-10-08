@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { Todo } from 'src/app/models/todo.model';
+import { ApiError } from '@models/api-error.model';
+import { Todo } from '@models/todo.model';
 
 export enum ActionTypes {
     LOAD_ITEMS = '[Todos] Load items',
@@ -16,5 +17,5 @@ export const loadItemsSuccess = createAction(
 );
 export const loadItemsFailure = createAction(
     ActionTypes.LOAD_FAILURE,
-    props<{ error: string }>()
+    props<{ error: ApiError }>()
 );

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { UserStorageFacade } from '@facades/user-storage.facade';
 import { Store } from '@ngrx/store';
+import { State } from './state';
 import * as UserActions from './actions';
 import * as UserSelectors from './selectors';
-import { State } from './state';
 
 
 @Injectable()

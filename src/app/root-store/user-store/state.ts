@@ -1,9 +1,10 @@
+import { ApiError } from '@models/api-error.model';
 import { User } from '@models/user.model';
 
 export interface State {
     data: User | null;
     isLoading?: boolean;
-    error?: any;
+    error?: ApiError;
 }
 
 export const initialState: State = {
