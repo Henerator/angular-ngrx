@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
-import { todosFeatureKey, todosReducer } from './reducer';
+import { todosReducer, TODOS_FEATURE_KEY } from './reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { TodosStoreEffects } from './effects';
 
@@ -11,7 +11,7 @@ import { TodosStoreEffects } from './effects';
     declarations: [],
     imports: [
         CommonModule,
-        StoreModule.forFeature(todosFeatureKey, todosReducer),
+        StoreModule.forFeature(TODOS_FEATURE_KEY, todosReducer),
         EffectsModule.forFeature([TodosStoreEffects])
     ],
     providers: [

@@ -6,7 +6,6 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 import { TodosDataService } from 'src/app/services/todos-data.service';
 import * as todosActions from './actions';
 
-
 @Injectable()
 export class TodosStoreEffects {
     constructor(
@@ -16,20 +15,14 @@ export class TodosStoreEffects {
 
     @Effect()
     todosRequestEffect$: Observable<Action> = this.actions$.pipe(
-        ofType<todosActions.LoadRequestAction>(
-            todosActions.ActionTypes.LOAD_REQUEST
-        ),
-        switchMap(action => this.todosDataService.fetch()
-            .pipe(
-                map(
-                    items => new todosActions.LoadSuccessAction({
-                        items,
-                    })
-                ),
-                catchError(error => of(new todosActions.LoadFailureAction({
-                    error
-                })))
-            )
-        )
+        ofType(todosActions.loadRequest),
+        switchMap(() => {
+            return this.todosDataService
+                .fetch()
+                .pipe(
+                    map(items => todosActions.loadSuccess({ items })),
+                    catchError(error => of(todosActions.loadFailure({ error })))
+                );
+        })
     );
 }

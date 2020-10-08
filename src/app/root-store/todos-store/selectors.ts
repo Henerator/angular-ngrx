@@ -1,25 +1,18 @@
-import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
-import { Todo } from 'src/app/models/todo.model';
-import { State } from './state';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { TODOS_FEATURE_KEY } from './reducer';
+import { TodosState } from './state';
 
-const getError = (state: State): any => state.error;
-const getIsLoading = (state: State): boolean => state.isLoading;
-const getItems = (state: State): Todo[] => state.items;
+export const selectTodosState = createFeatureSelector<TodosState>(TODOS_FEATURE_KEY);
 
-export const selectTodosState: MemoizedSelector<
-    object,
-    State
-> = createFeatureSelector<State>('todos');
-
-export const selectTodosError: MemoizedSelector<object, any> = createSelector(
+export const selectTodosError = createSelector(
     selectTodosState,
-    getError
+    state => state.error
 );
-export const selectTodosIsLoading: MemoizedSelector<object, boolean> = createSelector(
+export const selectTodosIsLoading = createSelector(
     selectTodosState,
-    getIsLoading
+    state => state.isLoading
 );
-export const selectTodosItems: MemoizedSelector<object, Todo[]> = createSelector(
+export const selectTodosItems = createSelector(
     selectTodosState,
-    getItems
+    state => state.items
 );

@@ -1,34 +1,30 @@
-import { Actions, ActionTypes } from './actions';
-import { initialState, State } from './state';
+import { Action, createReducer, on } from '@ngrx/store';
+import { initialState, TodosState } from './state';
+import * as TodosActions from './actions';
 
-export const todosFeatureKey = 'todos';
+export const TODOS_FEATURE_KEY = 'todos';
 
-export function todosReducer(state = initialState, action: Actions): State {
-    switch (action.type) {
-        case ActionTypes.LOAD_REQUEST: {
-            return {
-                ...state,
-                isLoading: true,
-                error: null,
-            };
-        }
-        case ActionTypes.LOAD_SUCCESS: {
-            return {
-                ...state,
-                items: action.payload.items,
-                isLoading: false,
-                error: null,
-            };
-        }
-        case ActionTypes.LOAD_FAILURE: {
-            return {
-                ...state,
-                isLoading: false,
-                error: action.payload.error,
-            };
-        }
-        default: {
-            return state;
-        }
-    }
+const reducer = createReducer(
+    initialState,
+    on(TodosActions.loadRequest, (state) => ({
+        ...state,
+        isLoading: true,
+        error: null,
+    })),
+    on(TodosActions.loadSuccess, (state, { items }) => ({
+        ...state,
+        items,
+        isLoading: false,
+        error: null,
+    })),
+    on(TodosActions.loadFailure, (state, { error }) => ({
+        ...state,
+        isLoading: false,
+        error,
+    })),
+
+);
+
+export function todosReducer(state: TodosState | undefined, action: Action): TodosState {
+    return reducer(state, action);
 }
